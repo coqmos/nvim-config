@@ -7,7 +7,7 @@ return {
 			local harpoon = require("harpoon")
 
 			-- REQUIRED
-			harpoon:setup()
+			harpoon:setup({})
 			-- REQUIRED
 
 			vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
