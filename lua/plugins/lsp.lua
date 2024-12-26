@@ -7,5 +7,7 @@ return {
 	config = function()
 		require("mason-lspconfig").setup()
 		require("mason").setup()
+		require('lspconfig').pyright.setup{}
+
 	end
 }
