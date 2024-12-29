@@ -1,4 +1,4 @@
-vim.wo.relativenumber = true
+vim.wo.number = true
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
