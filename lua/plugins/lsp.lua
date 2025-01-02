@@ -1,13 +1,22 @@
-return {
-	"neovim/nvim-lspconfig",
+local M = {
+	'VonHeikemen/lsp-zero.nvim',
+	branch = "v1.x",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-	},
-	config = function()
-		require("mason-lspconfig").setup()
-		require("mason").setup()
-		require('lspconfig').pyright.setup{}
+		-- LSP support
+		'neovim/nvim-lspconfig',
 
-	end
+		-- Autocompletetion
+		'hrsh7th/nvim-cmp',
+		'hrsh7th/cmp-buffer',
+		'hrsh7th/cmp-path',
+		'saadparwaiz1/cmp_luasnip',
+		'hrsh7th/cmp-nvim-lsp',
+		'hrsh7th/cmp-nvim-lua',
+
+		-- Snippets
+		'L3MON4D3/LuaSnip',
+		'rafamadriz/friendly-snippets',
+	},
 }
+
+return M
