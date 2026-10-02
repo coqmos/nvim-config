@@ -25,11 +25,13 @@ A quick lookup guide for the most common keybindings and commands.
 | `<leader>tn` / `<leader>tp` | Next/prev error |
 | `<leader>tt` | Toggle error panel |
 
-### Git & Undo
+### Git, Markdown & Undo
 | Keys | Action |
 |------|--------|
 | `<leader>gs` | Git status |
 | `<leader>u` | Undo tree |
+| `<leader>mp` | Preview markdown in browser |
+| `<leader>mc` | Close markdown preview |
 
 ### Text Editing
 | Keys | Action |

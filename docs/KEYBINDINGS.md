@@ -56,6 +56,15 @@ Fugitive provides Git commands integration.
 |-----------|------|--------|
 | `<leader>gs` | Normal | Open Fugitive Git status (`:Git`) |
 
+## Markdown Preview - Live Markdown Viewing
+
+Preview markdown files in browser with live updates.
+
+| Keybinding | Mode | Action |
+|-----------|------|--------|
+| `<leader>mp` | Normal | Open markdown preview in browser |
+| `<leader>mc` | Normal | Close markdown preview |
+
 ## Text Manipulation
 
 | Keybinding | Mode | Action |
