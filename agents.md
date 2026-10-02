@@ -193,6 +193,81 @@ When ready to merge (requires branch protection):
 4. No breaking changes without migration path
 5. Minimal, focused changes (not mega-commits)
 
+## Documentation System
+
+This repository maintains comprehensive documentation to keep the config usable and maintainable.
+
+### Documentation Files
+
+| File | Purpose |
+|------|---------|
+| `README.md` | Project overview, quick start, feature summary |
+| `docs/CHEATSHEET.md` | Quick reference for most-used keybindings and commands |
+| `docs/KEYBINDINGS.md` | Complete reference for all keybindings organized by plugin |
+| `docs/PLUGINS.md` | Detailed docs for each plugin: how to use, configure, extend |
+| `docs/SETUP.md` | Step-by-step installation for macOS, Linux, Windows |
+| `docs/ARCHITECTURE.md` | Project structure, design patterns, how to add plugins |
+| `docs/TROUBLESHOOTING.md` | Common issues, causes, and solutions |
+| `docs/MARKDOWN_VIEWER.md` | How to view and navigate docs within Neovim |
+| `docs/IMPROVEMENTS.md` | Roadmap with 20+ enhancement ideas and priorities |
+| `agents.md` | These rules — agent guidelines and conventions |
+| `.claude/CLAUDE.md` | Claude-specific workflow and quick reference |
+
+### Documentation First Principle
+
+Documentation is not an afterthought — it's part of the code change.
+
+**Every code change requires documentation updates.** This is not optional.
+
+Example matrix:
+
+```
+Code Change                          → Update These Docs
+─────────────────────────────────────────────────────────────
+Add new plugin                       → PLUGINS.md, ARCHITECTURE.md
+Add/change keybinding                → KEYBINDINGS.md, CHEATSHEET.md
+Change setup/installation            → SETUP.md, README.md
+Fix a bug                            → TROUBLESHOOTING.md (if relevant)
+Optimize performance                 → IMPROVEMENTS.md
+Refactor code structure              → ARCHITECTURE.md
+Add language server                  → PLUGINS.md, SETUP.md
+Change default behavior              → KEYBINDINGS.md, ARCHITECTURE.md
+```
+
+### Viewing Documentation in Neovim
+
+Users can read all docs directly in Neovim:
+
+```bash
+nvim README.md
+nvim docs/CHEATSHEET.md
+nvim docs/KEYBINDINGS.md
+# etc...
+```
+
+See `docs/MARKDOWN_VIEWER.md` for how to set up better markdown viewing with plugins.
+
+### Documentation Quality Standards
+
+When writing or updating docs:
+
+✅ **DO:**
+- Write clearly for users unfamiliar with the feature
+- Include examples and code snippets
+- Link to related docs with `[Link](path/to/file.md)`
+- Add troubleshooting sections when relevant
+- Keep formatting consistent with existing docs
+- Add context about WHY something works that way
+- Include both beginner and advanced usage
+
+❌ **DON'T:**
+- Leave typos or grammar errors
+- Write docs that are outdated compared to code
+- Include sensitive information (passwords, tokens)
+- Create orphaned docs without linking them
+- Write overly technical without explaining basics
+- Mix multiple unrelated topics in one doc
+
 ## References
 
 - [Conventional Commits](https://www.conventionalcommits.org/)
@@ -203,3 +278,4 @@ When ready to merge (requires branch protection):
 
 **Last Updated**: October 2, 2026  
 **Applies To**: All Claude Code sessions and contributors
+**See Also**: [.claude/CLAUDE.md](./.claude/CLAUDE.md) for Claude-specific guidelines
