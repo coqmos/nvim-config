@@ -122,7 +122,7 @@ where pyright       # Windows
 3. Test with: Type code and press `<C-x><C-o>`
 
 ### Issue: Markdown Preview Not Opening in Browser
-**Cause**: Browser not found or not configured
+**Cause**: Browser not found, not configured, or Node.js dependencies not installed
 
 **Solution**:
 1. **Ensure Firefox is installed**:
@@ -132,12 +132,22 @@ where pyright       # Windows
    sudo apt install firefox
    ```
 
-2. **Configure browser path** in `lua/plugins/markdown-preview.lua`:
+2. **Install plugin dependencies** (if build process didn't run):
+   ```bash
+   # Navigate to plugin directory
+   cd ~/.local/share/nvim/lazy/markdown-preview.nvim
+   
+   # Install Node.js dependencies
+   npm install
+   ```
+   *Note: The plugin's build process should do this automatically, but if you see "Cannot find module 'tslib'" error, run this manually.*
+
+3. **Configure browser path** in `lua/plugins/markdown-preview.lua`:
    ```lua
    vim.g.mkdp_browser = '/usr/bin/firefox'  -- or '/usr/bin/brave-browser'
    ```
 
-3. **Test preview**:
+4. **Test preview**:
    ```vim
    :e README.md          " Open markdown file
    :MarkdownPreview      " Start preview
