@@ -118,20 +118,28 @@ Servers in the `M.servers` list in `lua/plugins/mason.lua` are automatically ins
 ## Treesitter
 
 **Repository**: [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)  
-**Purpose**: Syntax highlighting, code navigation, and text objects
+**Purpose**: Syntax highlighting, code navigation, and text objects  
+**Neovim 0.12 Status**: ✅ Fully compatible (simplified configuration)
 
 ### Supported Languages
-Currently configured:
-- JavaScript
-- PHP
-- TypeScript
+Currently configured for auto-install:
 - Lua
-- Markdown (with Vim regex fallback)
+- JavaScript
+- TypeScript
+- PHP
 
 ### Features
 - **Syntax highlighting**: Language-aware code colors
 - **Code indentation**: Context-aware auto-indentation
 - **Incremental parsing**: Faster updates as you type
+- **Auto-install**: Parsers automatically install on first file open
+- **Performance optimized**: Disables highlighting on files > 100KB
+
+### Neovim 0.12 Changes
+Treesitter configuration was simplified for Neovim 0.12 compatibility:
+- Removed custom parser installation directory
+- Use Neovim's built-in parser management
+- Parser auto-installation on demand (first file open may take 10-30 seconds)
 
 ### Adding Language Support
 Edit `lua/plugins/treesitter.lua` and add language names to `ensure_installed`:
