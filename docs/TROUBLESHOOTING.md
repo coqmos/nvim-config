@@ -121,6 +121,31 @@ where pyright       # Windows
 2. Check cmp is loaded: `:Lazy` → search "cmp"
 3. Test with: Type code and press `<C-x><C-o>`
 
+### Issue: Markdown Preview Not Opening in Browser
+**Cause**: Browser not found or not configured
+
+**Solution**:
+1. **Ensure Firefox is installed**:
+   ```bash
+   which firefox
+   # If not found, install:
+   sudo apt install firefox
+   ```
+
+2. **Configure browser path** in `lua/plugins/markdown-preview.lua`:
+   ```lua
+   vim.g.mkdp_browser = '/usr/bin/firefox'  -- or '/usr/bin/brave-browser'
+   ```
+
+3. **Test preview**:
+   ```vim
+   :e README.md          " Open markdown file
+   :MarkdownPreview      " Start preview
+   :MarkdownPreviewStop  " Stop preview
+   ```
+
+**Note**: First preview generation takes 5-10 seconds. Firefox opens on `http://localhost:8080`
+
 ### Issue: "Server is busy"
 **Cause**: Language server still initializing
 
