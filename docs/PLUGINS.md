@@ -255,11 +255,12 @@ Located in `lua/plugins/file-finders.lua`
 ## Markdown Preview
 
 **Repository**: [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)  
-**Purpose**: Live markdown preview in browser as you edit
+**Purpose**: Live markdown preview in browser as you edit  
+**Browser**: Firefox (full path: `/usr/bin/firefox`)
 
 ### How It Works
 - Open any `.md` file in Neovim
-- Press `<leader>mp` to open live preview in default browser
+- Press `<leader>mp` to open live preview in Firefox
 - Edit the markdown, browser updates in real-time
 - Press `<leader>mc` to close the preview
 
@@ -267,21 +268,28 @@ Located in `lua/plugins/file-finders.lua`
 - **Live updates**: Changes reflect instantly in browser
 - **Syntax highlighting**: Code blocks are properly highlighted
 - **Table support**: Markdown tables render beautifully
-- **Responsive design**: Works on all screen sizes
+- **Local server**: Preview runs on `http://localhost:8080`
 
-### Use Cases
-- Write documentation while seeing formatted output
-- Review complex markdown before committing
-- Edit blog posts with instant visual feedback
-- Create presentations with markdown
+### Requirements
+- Firefox must be installed (`sudo apt install firefox`)
+- Or configure different browser in `lua/plugins/markdown-preview.lua`
 
 ### Configuration
 Located in `lua/plugins/markdown-preview.lua`
 
+Uses Firefox directly via: `vim.g.mkdp_browser = '/usr/bin/firefox'`
+
+To use different browser, change the path to your browser executable:
+```lua
+vim.g.mkdp_browser = '/usr/bin/brave-browser'  -- for Brave
+vim.g.mkdp_browser = '/usr/bin/chromium'       -- for Chromium
+```
+
 ### Tips
 - Keep browser window side-by-side with Neovim for best experience
-- Preview automatically opens in default browser
-- Close preview when done to free up browser tab
+- First preview opens on `http://localhost:8080`
+- First preview generation takes 5-10 seconds
+- Close preview when done to free up the port
 
 ---
 
