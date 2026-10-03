@@ -5,28 +5,29 @@ return {
 		-- Safely require treesitter with fallback
 		local ok, configs = pcall(require, "nvim-treesitter.configs")
 		if not ok then
-			vim.notify("Treesitter not fully loaded, skipping config", vim.log.levels.WARN)
+			vim.notify("Treesitter loading deferred (will auto-install on file open)", vim.log.levels.INFO)
 			return
 		end
 
-		-- Defines a read-write directory for treesitters in nvim's cache dir
-		local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitters"
-		vim.fn.mkdir(parser_install_dir, "p")
-		-- Prevents reinstall of treesitter plugins every boot
-		vim.opt.runtimepath:append(parser_install_dir)
-
+		-- Simplified config for Neovim 0.12 compatibility
 		configs.setup({
-			parser_install_dir = parser_install_dir,
-			ensure_installed = {"javascript", "php", "typescript", "lua"},
+			ensure_installed = { "lua", "javascript", "typescript", "php" },
 			sync_install = false,
 			auto_install = true,
 			indent = {
-				enabled = true
+				enable = true
 			},
 			highlight = {
-				enabled = true
+				enable = true,
+				-- Disable for large files to avoid performance issues
+				disable = function(lang, buf)
+					local max_filesize = 100 * 1024 -- 100 KB
+					local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+					if ok and stats and stats.size > max_filesize then
+						return true
+					end
+				end,
 			},
-			additional_vim_regex_highlighting = {"markdown"},
 		})
 	end
 }
