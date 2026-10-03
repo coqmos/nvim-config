@@ -146,6 +146,26 @@ where pyright       # Windows
 
 **Note**: First preview generation takes 5-10 seconds. Firefox opens on `http://localhost:8080`
 
+### Issue: Treesitter "module not found" with Neovim 0.12
+**Cause**: Treesitter parser compilation needed for Neovim 0.12
+
+**Solution**:
+1. Clear cache and rebuild:
+   ```bash
+   rm -rf ~/.cache/nvim/treesitters
+   nvim
+   ```
+
+2. Rebuild treesitter parsers:
+   ```vim
+   :TSUpdate
+   :TSInstall lua javascript typescript php
+   ```
+
+3. Restart Neovim and open a `.lua` or `.js` file to trigger parser compilation
+
+**Note**: First file open with treesitter may take 10-30 seconds as parsers compile. Subsequent opens are instant.
+
 ### Issue: "Server is busy"
 **Cause**: Language server still initializing
 
